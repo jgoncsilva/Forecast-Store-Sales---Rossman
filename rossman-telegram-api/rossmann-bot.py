@@ -9,17 +9,17 @@ TOKEN= '1363696729:AAEw0LqK4xA8-nINohUe8BCM1Eu2xJAn7xE'
 
 '''
 #informações sobre o bot
-https://api.telegram.org/bot1363696729:AAEw0LqK4xA8-nINohUe8BCM1Eu2xJAn7xE/getMe
+
 
 #Get Updates 
-https://api.telegram.org/bot1363696729:AAEw0LqK4xA8-nINohUe8BCM1Eu2xJAn7xE/getUpdates
+
 
 #set webhook
-https://api.telegram.org/bot1363696729:AAEw0LqK4xA8-nINohUe8BCM1Eu2xJAn7xE/setWebhook?url=https://andre-3e2235cd.localhost.run
+
 
 
 #mandando mensagem
-https://api.telegram.org/bot1363696729:AAEw0LqK4xA8-nINohUe8BCM1Eu2xJAn7xE/sendMessage?chat_id=1116853082&text=Tudo bem, testando de volta
+
 '''
 def send_message(chat_id, text):
     url = 'https://api.telegram.org/bot{}/'.format(TOKEN)
@@ -98,39 +98,50 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 
 def index():
+    emoji_money_bag = u'\U0001F4B0'
+    emoji_cold_sweat = u'\U0001F630'
+    emoji_confused = u'\U0001F615'
+
     if request.method == 'POST':
         message = request.get_json()
 
+        # parses message comming from json
         chat_id, store_id = parse_message(message)
 
-        if store_id != 'error':
-            #carregando arquivo 
+        if (store_id != 'error' and store_id != 'start'):
+            # loads data
             data = load_dataset(store_id)
 
             if data != 'error':
-                #predição
+                # makes the prediction
                 d1 = predict(data)
-                #soma
-                d2 = d1[['store', 'prediction']].groupby('store').sum().reset_index()
 
-                #mandar mensagem
-                msg = 'A loja {} venderá RS:{:,.2f} nas próximas 6 semanas!'.format(d2['store'].values[0], d2['prediction'].values[0])
+                # calculates
+                # gets total sales by store
+                d2 = d1[['store', 'prediction']].groupby('store').sum().reset_index()
+                
+                # sends message
+                msg = 'The estimated total amount of sales, by the end of the next 6 weeks, for the store number {} is US${:,.2f}'.format(
+                        d2['store'].values[0], 
+                        d2['prediction'].values[0])
                 
                 send_message(chat_id, msg)
-                
                 return Response('OK', status=200)
 
             else:
-                send_message(chat_id, 'Loja não encontrada')
+                send_message(chat_id, 'This store number does not exist ' + emoji_confused + '\nPlease, enter another store number. \nExample: /42')
                 return Response('OK', status=200)
 
+        elif(store_id == 'start'):
+            send_message(chat_id, 'Hello! It is a great day to do business! ' + emoji_money_bag)
+            return Response('OK', status=200)
 
         else:
-            send_message(chat_id, 'Número da loja incorreto')
+            send_message(chat_id, 'Hmmm... This does not seem to be a store number ' + emoji_cold_sweat + '\nPlease enter a store number. \nExample: /42')
             return Response('OK', status=200)
 
     else:
-        return '<h1> Rossmann Telegram Bot </h1>'
+        return '<h1>Rossmann Telegram BOT</h1>'
 
 if __name__ == '__main__':
     port = os.environ.get('PORT', 5000)
