@@ -1,6 +1,6 @@
 # Rossmann stores sales prediction
 
-![](img/project_banner.png)
+![](img/rossman.png)
 
 ---
 
@@ -43,11 +43,15 @@ The delivered solution was a Telegram bot.
 
 The user just needed to send the store number and the bot would answer the predicted **total sales that the store would made by the end of the next six weeks**.
 
-![](img/rossmann_bot.gif)
+![](img/rossmann-git7b.gif)
+
+# Architecture
+![](img/rossman-api.jpg)
+
 
 <br>
 
-## 3.1 What drove the solution
+## 3.1 Solution
 ### 3.1.1 Exploratory Data Analysis
 
 #### Descriptive analysis
