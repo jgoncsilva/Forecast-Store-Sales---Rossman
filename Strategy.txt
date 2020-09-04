@@ -1,0 +1,253 @@
+1º - EDA - Analise exploratoria
+- Prophet 
+2 = Analise Descritiva 
+(CRIAR PROBLEMAS DE NEGOCIO - 5~10 )2º - Criar problemas de negocio - 
+- Criar situações fict
+Ver uma forma de responder!
+3 - Feature Engeneering 
+4 - Treinar e testar os algortimo
+4.1 - Hyperparameter fine tuning
+Resultado do modelo - Accuracy / Score/ RMSE 
+
+
+- Colocar em Produção 
+- Flask API na Cloud
+- Possa requistar os dados de todas as lojas pras proximas 6 semanas
+- DAta visualization - TELEGRAM
+Dinamica 
+/23 
+Plot ( Grafico com a predição pras proximas semanas)
+Predição tem contar com o melhor e o pior cenario (Algoritmo)
+
+1.115 lojas
+Dashboard - Menos eficaz! Menos impressive 
+
+/Bot (Heroku) - Intergrar 
+O bot faz requesta da API na Cloud para disponibilizar os dados das lojas 
+
+
+
+
+- Passos (Entende os problemas de negocio, extrair, limpar, transformar, entender, aplicar ML, Interpretar o erro e falar para o negocio)
+> Descrição dos dados
+> Feature Engeneering
+> Filtragem de Variaveis 
+> Analise exploratoria de dados
+> Preparação dos dados
+> Seleção de variaveis com Algoritmo 
+> Modelos de machine learning  (5 no Maximo)
+> Hyperparameter Fine Tuning (Maximar performance - Reduzir erro)
+> Interpretação e tradução do Erro (Entender a performance do modelo a partir do erro que o modelo gera)
+Tradução do erro : Sentindo de negocio - 90% precisa-se traduzir em um resultado de negocio 
+> Deploy do Modelo em Produção  - Colocar disponilizado para que as pessoas utilizem o resultado 
+
+- Para pensar em Redes neurais - A performance depende de requisitos para o qual foi pensada!
+
+
+(Entender os algoritmos e performar no Dataset especifico )
+
+
+PERGUNTAS ABERTAS E INTERPRETAR O PROBLEMA (ENTENDIMENTO DE NEGOCIO)
+
+
+
+
+O PROBLEMA DE NEGOCIO : Como entender?
+Contexto do Desafio 
+- O CFO DA empresa fez uma reuniao como todos os gerentes de loja e pediu para que cada um deles trouxesse um previsao diaria
+das proximas 6 semanas de vendas. (Previsão de quanto dinheiro vai entrar pra fazer reforma das lojas? - Motivos?)
+- Causa raiz do problema - Investimento 
+- StakeHolder - CFO 
+- Formato da solução - REceita das proximas 6 semanas
+-Predições acessadas on demand 
+- Apos essa reuniao todos os gerentes (Mais de 1000) entram em contato comigo requisitando uma previsao de vendas nas suas 
+respectivas lojas.
+
+1º Fase de questionamento (Understand the problem)
+- Motivação 
+  a) Qual o contexto?
+  b) Porque Previsão de vendas?
+  c) Dono do Problema? CFO - StakeHolder?
+  b) Formato da Solução -
+   > Granularidade (Diaria, Semanal, Mensal, Categoria, Produto?)
+   >  Tipo de problema (Clusterização, Previsão, Time-series)
+   >  Formato de entrega (Dashboard, CSV, Anexo de e-mail, On-demand)
+
+
+
+Rossman - Rede de farmacias 3000 stores em mais de 7 paises da Europa. Tarefa de Previsão diaria em ate 6 semanas. 
+Vendas - Sao influencias por fatores
+- Promoção
+- COmpetição 
+- Escola
+- Sazonalidade
+- Feriados
+- Localidade
+
+Train 
+Test 
+Sample_submision- Submissao 
+Store - Informação suplementar sobre caracteristicas da loja 
+
+Documentação  do DATASET
+Data fields
+Most of the fields are self-explanatory. The following are descriptions for those that aren't.
+
+Id - an Id that represents a (Store, Date) duple within the test set (ID da loja)
+Store - a unique Id for each store (Identificação unica)
+Sales - the turnover for any given day (this is what you are predicting) (Vendas)
+Customers - the number of customers on a given day (Clientes)
+Open - an indicator for whether the store was open: 0 = closed, 1 = open (Aberta 1 ou Fechada 0)
+StateHoliday - indicates a state holiday. Normally all stores, with few exceptions, are closed on state holidays. Note that all schools are closed on public holidays and weekends. a = public holiday, b = Easter holiday, c = Christmas, 0 = None
+SchoolHoliday - indicates if the (Store, Date) was affected by the closure of public schools
+StoreType - differentiates between 4 different store models: a, b, c, d (Tipo de loja)
+Assortment - describes an assortment level: a = basic, b = extra, c = extended (Disposição 3 tipos  )
+CompetitionDistance - distance in meters to the nearest competitor store (Distancia dos competidores mais proximos)
+CompetitionOpenSince[Month/Year] - gives the approximate year and month of the time the nearest competitor was opened (Data da competição )
+Promo - indicates whether a store is running a promo on that day
+Promo2 - Promo2 is a continuing and consecutive promotion for some stores: 0 = store is not participating, 1 = store is participating (Promoção)
+Promo2Since[Year/Week] - describes the year and calendar week when the store started participating in Promo2 (Extensão da promoção )
+PromoInterval - describes the consecutive intervals Promo2 is started, naming the months the promotion is started anew. E.g. "Feb,May,Aug,Nov" means each round starts in February, May, August, November of any given year for that store
+(Intervalo que as promoções acontecem )
+
+
+
+#SETTING VIRTUAL ENVIROMENT (Virtual Env)
+
+#DEPENDENCIAS DO PROJETO 
+- Pacotes 
+- Bibliotecas
+- Variaveis de Ambiente
+- IDES 
+
+ VERIFICAR VERSOES DENTRO DO AMBIENTE ANACONDA. 
+C\Users\Users\Admin\anaconda3\envs\rossman
+
+Apos a lista final de hipoteses - Creio que as hipoteses de tempo são as que posso explorar melhor! A lista final  vai 
+Feature engineering  - Derivar as variaveis para que sejam acessiveis ao modelo de ML. 
+- Year - Processo pra mês dia e ano é a mesma coisa 
+- Month - Extraido da variavel date
+- day - Extraido da variavel date
+- week of year - metodo weekofyear
+-year week - strtime (Ano - W - '%Y-$%W')
+- competition since - Class datetime e metodo date time, passar variaveis. Apply precisa ser aplicado no DF2 (guiado) by lambda
+- Fazer a diferença do Competition since - Date - Resultado precisa ser dividido por 30 pra MANTER A GRANULARIDADE. 
+- promo since - Precisa-se das 2 datas pra fazer a diferença entre elas.
+> Join dos caracteres e conversão pra data 
+> astype - (ano - semana do ano)
+> Mês não temos.
+> strptime/timedelta (formato %Y-%W-%w)  = days_7
+> apply sobre o df2.
+>Apos ter as 2 datas subtrair as 2 e dividir pro 7. Extrair os dias em 7 e colocar como int.
+
+- Assortment - Criar condições de substituição para a,b,c. Lambda+apply
+
+- Stateholiday
+- Condicional - retornar o public/easter/christmas/ para a,b,c else dia regular. Lambda-apply
+
+Passo 3 - FILTRAGEM DE VARIAVEIS
+Recap : 
+1) Descrição dos dados : 
+>resumo usando medidas da analise descritiva
+> formatos de dados
+> Check dos N/A
+> Data Cleaning
+
+2) Feature Engineering 
+- Derivação das features
+- Criação de um mapa mental de hipothesys
+- Definiu-se 
+> fenomeno
+> Agentes
+> atributos
+- Criação de uma lista de hipothesys e priorizar de acordo com os dados disponiveis 
+
+
+Passo 3 
+FILTRAR VARIAVEL (diferente de Selecionar Variavel) 
+- Pra por um modelo em produção tem que se forçar a pensar nas Restrições de negocio
+- Filtrar - Restrição do negocio (e.g : Desconto (Criação de delta de preço)- Porem não tem como se dar o preço do desconto antes, pois eles são dados que se tem apos o inicio das vendas. Papel Humano
+- Seleção de variaveis - Algoritmo vai ver as variaveis mais relevantes pro modelo verificando as relações para revelar as mais importantes pro algoritmo. Boruta!!
+
+Steps: DF3 (Fazer copia do df2 para trabalhar nesta fase)
+- Filtragem das LINHAS: (diminuir o volume do dataset)
+> Open  = Diferente de 0 pois quando a loja esta fechada sales = 0 
+> Sales > 0 - As vendas tem que ser maior que 0 
+
+- Selecionar as COLUNAS : Customers não serve porque eu teria de ter a predição dela pras 6 semanas, fazer um projeto para prever os customers e usar o resultado como uma variavel neste projeto. (RESTRIÇÃO)
+
+- Drop colunas - Customers, open, promo-interval, month_map
+
+Analise Exploratoria de Dados - EDA
+- Motivação (Como as variaveis impactam o fenomeno, e como quantificar esse impacto, pra descobrir qual será o motivo dos algoritmos não funcionarem tão bem é preciso ser assertivo e fazer uma EDA)
+- Objetivo - Entender o business (discutir KPI, Metricas e medidas) - Importante pra trocar insights
+>validar Hipoteses do negocio e gerar insights (Surpresa/ Chocar crenças empiricas)
+> Perceber variaveis e ganhar sensibilidade de quais variaveis usar no feature selection, pois por mais que o Boruta me diga as correlações, depois do EDA é possivel ter esse conhecimento/sensibilidade sobre variaveis importantes
+> Analise Univariada - (Min, max, Distribuição, Range - Analisar a variavel per si)
+> Analise Bivariada - Impacto na resposta, correlação e validação de hipoteses
+> Analise Multivariada - Relacionamento das variaveis entre elas. 
+
+- Copia do df3 para DF4 (Dataframe original permanece intacto)
+
+- Univeriada - 
+> Response Variables - Proxima de uma normal, mas não é uma normal. Quanto mais normal melhor performance.
+> Usar logp no distplot pra fazer essa analise.
+y - plot de uma entidade de distribuição 
+
+> Numerical variables  (bins 25)
+> day of week - Todos os competidores estão muito proximos (quase nao tem relacionado pro modelo)
+> competition_open_since_month - Comportamento 
+
+> CATEGORICAL  - 2 plots pra resumir pra não ter de fazer encoding
+- idea de volume - Quantificar com Countplot pra ver entre (regular, easter, public_holiday, christmas. 
+- Plotar distribuiçoes sobrepostas usando plt. subplot (1 linhas, 2 colunas, 1 posiçao) 
+- Chrsitimas tem um pico muito maior do que o easter!
+
+> STORE TYPE - AJUSTAR O GRID (2x2)
+O tipo de lojas que suscitam indagações.
+> ASSORTMENT - Gride 3x2
+
+ANALISE BIVARIADA 
+> Lojas com maior sortimento deveriam vender mais?
+- FALSA : lojas com maior sentimento vendem menos
+
+- H2 - Lojas com competidores mais proximos deveriam vender menos 
+- Falso - Lojas com Competidores à mais tempo vendem mais
+
+- Duas variaveis pelo metodo de Pearson (vai de -1 ate 1) -1 Correlação perfeitamente negativa. -0.23 - Correlação fraca mas que pode ser relevante pro modelo 
+
+H3 - Lojas com competidores a mais tempo deveriam vender mais (As coisas não se regularizam e se estabilizam). 
+Falsa - Lojas com competidores com o tempo vendem menos. Contraintuitivo.
+Correlação entre o tempo e as vendas e relação de pearson com 0.1
+
+h4 - Lojas com promoções ativas por mais tempo deveriam vender mais.
+- FALSA - Quanto mais tempo de promoção ativa vendem MENOS. (depois de um certo periodo de promoção) pode ser um insight contraintuitivo a crença de que promoção faz vender mais. 
+- Relevancia pro modelo - Tempo de promoção ativa em relação as vendas 
+Correlaçao de pearson entre essas 2 variaveis numericas tem uma correlação de -0.029 - Provavelmente NAO RELEVANTE
+
+H.5 - Proximo ciclo do CRISP
+H.6 - Null pois errei a numeraçao
+
+h.7 - Lojas com mais promoção consecutivas deveriam vender mais  - FALSA
+- Lojas com mais promoções consecutivas vendem menos 
+- Pode ser um insight pois promoções consecutivas supostamente estao relaconadas a mais vendas 
+- Relevancia do modelo - Promoções consecutivas em relação as vendas. Comportamento similar entre as vendas que aconteceram durante o periodo extendido e vendas que aconteceram no periodo tradicional. 
+Exceto 
+
+/home/jhonatas/Projects/Rossman/Forecast-Predict-Sales---Rossman
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

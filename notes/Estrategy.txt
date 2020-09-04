@@ -1,0 +1,164 @@
+1º - EDA - Analise exploratoria
+- Prophet 
+2 = Analise Descritiva 
+(CRIAR PROBLEMAS DE NEGOCIO - 5~10 )2º - Criar problemas de negocio - 
+- Criar situações fict
+Ver uma forma de responder!
+3 - Feature Engeneering 
+4 - Treinar e testar os algortimo
+4.1 - Hyperparameter fine tuning
+Resultado do modelo - Accuracy / Score/ RMSE 
+
+
+- Colocar em Produção 
+- Flask API na Cloud
+- Possa requistar os dados de todas as lojas pras proximas 6 semanas
+- DAta visualization - TELEGRAM
+Dinamica 
+/23 
+Plot ( Grafico com a predição pras proximas semanas)
+Predição tem contar com o melhor e o pior cenario (Algoritmo)
+
+1.115 lojas
+Dashboard - Menos eficaz! Menos impressive 
+
+/Bot (Heroku) - Intergrar 
+O bot faz requesta da API na Cloud para disponibilizar os dados das lojas 
+
+
+
+
+- Passos (Entende os problemas de negocio, extrair, limpar, transformar, entender, aplicar ML, Interpretar o erro e falar para o negocio)
+> Descrição dos dados
+> Feature Engeneering
+> Filtragem de Variaveis 
+> Analise exploratoria de dados
+> Preparação dos dados
+> Seleção de variaveis com Algoritmo 
+> Modelos de machine learning  (5 no Maximo)
+> Hyperparameter Fine Tuning (Maximar performance - Reduzir erro)
+> Interpretação e tradução do Erro (Entender a performance do modelo a partir do erro que o modelo gera)
+Tradução do erro : Sentindo de negocio - 90% precisa-se traduzir em um resultado de negocio 
+> Deploy do Modelo em Produção  - Colocar disponilizado para que as pessoas utilizem o resultado 
+
+- Para pensar em Redes neurais - A performance depende de requisitos para o qual foi pensada!
+
+
+(Entender os algoritmos e performar no Dataset especifico )
+
+
+PERGUNTAS ABERTAS E INTERPRETAR O PROBLEMA (ENTENDIMENTO DE NEGOCIO)
+
+
+
+
+O PROBLEMA DE NEGOCIO : Como entender?
+Contexto do Desafio 
+- O CFO DA empresa fez uma reuniao como todos os gerentes de loja e pediu para que cada um deles trouxesse um previsao diaria
+das proximas 6 semanas de vendas. (Previsão de quanto dinheiro vai entrar pra fazer reforma das lojas? - Motivos?)
+- Causa raiz do problema - Investimento em reforma das lojas
+- StakeHolder - CFO 
+- Formato da solução - Receita das proximas 6 semanas
+- Problema de PREDIÇÃO -
+- FORMATO DA ENTREGA DA SOLUÇÃO Predições acessadas on demand 
+- Apos essa reuniao todos os gerentes (Mais de 1000) entram em contato comigo requisitando uma previsao de vendas nas suas 
+respectivas lojas.
+
+1º Fase de questionamento (Understand the problem)
+- Motivação 
+  a) Qual o contexto?
+  b) Porque Previsão de vendas?
+  c) Dono do Problema? CFO - StakeHolder?
+  b) Formato da Solução -
+   > Granularidade (Diaria, Semanal, Mensal, Categoria, Produto?)
+   >  Tipo de problema (Clusterização, Previsão, Time-series)
+   >  Formato de entrega (Dashboard, CSV, Anexo de e-mail, On-demand)
+
+
+
+Rossman - Rede de farmacias 3000 stores em mais de 7 paises da Europa. Tarefa de Previsão diaria em ate 6 semanas. 
+Vendas - Sao influencias por fatores
+- Promoção
+- COmpetição 
+- Escola
+- Sazonalidade
+- Feriados
+- Localidade
+
+Train - Treino
+Test  - Teste
+Sample_submision- Submissao 
+Store - Informação suplementar sobre caracteristicas da loja (caracteristicas da loja)
+
+Documentação  do DATASET
+Data fields
+Most of the fields are self-explanatory. The following are descriptions for those that aren't.
+
+Id - an Id that represents a (Store, Date) duple within the test set (ID da loja)
+Store - a unique Id for each store (Identificação unica)
+Sales - the turnover for any given day (this is what you are predicting) (Vendas)
+Customers - the number of customers on a given day (Clientes)
+Open - an indicator for whether the store was open: 0 = closed, 1 = open (Aberta 1 ou Fechada 0)
+StateHoliday - indicates a state holiday. Normally all stores, with few exceptions, are closed on state holidays. Note that all schools are closed on public holidays and weekends. a = public holiday, b = Easter holiday, c = Christmas, 0 = None
+SchoolHoliday - indicates if the (Store, Date) was affected by the closure of public schools
+StoreType - differentiates between 4 different store models: a, b, c, d (Tipo de loja)
+Assortment - describes an assortment level: a = basic, b = extra, c = extended (Disposição 3 tipos  )
+CompetitionDistance - distance in meters to the nearest competitor store (Distancia dos competidores mais proximos)
+CompetitionOpenSince[Month/Year] - gives the approximate year and month of the time the nearest competitor was opened (Data da competição )
+Promo - indicates whether a store is running a promo on that day (promoção regular )
+Promo2 - Promo2 is a continuing and consecutive promotion for some stores: 0 = store is not participating, 1 = store is participating (Extensão da Promoção por tempo a mai)
+Promo2Since[Year/Week] - describes the year and calendar week when the store started participating in Promo2 (Extensão da promoção )
+PromoInterval - describes the consecutive intervals Promo2 is started, naming the months the promotion is started anew. E.g. "Feb,May,Aug,Nov" means each round starts in February, May, August, November of any given year for that store
+(Intervalo que as promoções acontecem )
+
+
+
+#SETTING VIRTUAL ENVIROMENT (Virtual Env)
+
+#DEPENDENCIAS DO PROJETO 
+- Pacotes 
+- Bibliotecas
+- Variaveis de Ambiente
+- IDES 
+
+ VERIFICAR VERSOES DENTRO DO AMBIENTE ANACONDA. 
+C\Users\Users\Admin\anaconda3\envs\rossman
+
+
+# CRISP - DS (CRoss-Industry Process - Data Science)
+- Risco no metodo linear gastando tempo em uma etapa que pode no futuro não ser ciclica. 
+- Dados tem que estar em produção em determinado momento (Influenciar o time de data Engeneering )
+- Abrir mão de um pouco de Accuracy nao tendo um dado especifico mas colocar em produção pra ser usado. 
+ Caracteristicas:
+ - A cada ciclo do CRISP Completo :
+    > 1 Versão End-to-End da Solução (O modelo sera revisado e melhorar)
+    > Velocidade na entrega de valor
+    > Mapeamento de todos os possiveis problemas
+    > Teste de varios algoritmos, porem o objetivo não é ficar testando algoritmo de ML, precisa-se ser rapido pra entregar valor 
+    ao negocio para poder ENTREGAR VALOR. 
+
+  ETAPAS 
+  Questão de Negocios - Proatividade = Mapeamento dos processos da empresa. Encontrar as dores das pessoas!
+  > Buscar ganho de produtividade em determinadas atividades. 
+
+  > Entendimento do Negócio (Não sair fazendo as demandas do negócio) - Entender aquilo que foi requisitado 
+    > As pessoas não são as melhores para criar soluções para os seus proprios problemas.
+
+  > Coleta de Dados (SQL, API)  - Bancos de dados diferentes, varias tabelas, onde os dados foram armazenados, salvar em um ambiente para dai
+  começar a solução.
+
+  > Limpeza dos dados(Caracteres especiais 'ç ´', dtypes, sistema legado(Historicos diferentes) )
+
+  > Exploração - Fenomeno de previsão de vendas ( O que empurra as vendas pra baixo e o que puxas as vendas pra cima)
+  - Testes estatisticos para encontrar as correlações.
+
+ > Modelagem dos dados (Train/Test), Enconding de variaveis categorias (Transformar Categoricas em numericas), Transformação de variaveis resposta.
+ - Transformar os dados para que os algoritmos consigam performar
+
+ > Algoritmo de Machine Learning -
+
+ > Avaliação do Algoritmo (MAE, MAPE ,RMSE, Accuracy)
+
+ > Modelo em Produção ()
+
+
