@@ -43,10 +43,10 @@ The delivered solution was a Telegram bot.
 
 The user just needed to send the store number and the bot would answer the predicted **total sales that the store would made by the end of the next six weeks**.
 
-![ ](img/rossmann-git7b.gif)
+![](img/rossmann-gif7b.gif)
 
 # Architecture
-![ ](img/rossman-api.jpg)
+![](img/rossman-api.jpg)
 
 
 <br>
