@@ -624,15 +624,11 @@ Here is the documentation link: https://core.telegram.org/bots#3-how-do-i-create
 
 ## Telegram bot architecture
 
-![](img/10_telegram_bot_architecture.png)
-
 As pictured, the user sends a message to the bot containing the `store_id` which sends it to the **Rossmann API** which parses the message to extract the `store_id` and loads the **Test dataset**, then it calls a method from the Handler API sending the data. The **Handler API** makes all the operations on the data (cleaning, feature engineering, data preparation, modelo loading and prediction), then it returns the prediction to the Rossmann API which gets the returned data from the Handler API, formats it in a comprehensivable message to be sent to the user.
 
 To get more info about the **Telegram's bot API**, please visit https://core.telegram.org/bots/api
 
 <br>
-
-
 
 # Architecture
 ![](img/rossman-api.jpg)
@@ -640,7 +636,7 @@ To get more info about the **Telegram's bot API**, please visit https://core.tel
 ### 10.3 Prediction in action
 As the commands in Telegram bot starts with '`/`', we need to include it in the message sent to the bot. Example: "`/42`" (which is telling the bot to send us the predictions for the store whose `store_id` is `42`). 
 
-![](img/rossman-gif7b.gif)
+The pictures/gif can be founded in the beginning of this file.
 
 <br>
 
